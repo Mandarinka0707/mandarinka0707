@@ -15,7 +15,7 @@ const csv = require('csv-parser');
     const years = [ 2023, 2022, 2021]; // Adjust years as needed
     for (const year of years) {
       await page.waitForSelector('table tbody tr', { state: 'visible' });
-      let holidayRows = await page.$$('table tbody tr');
+      const holidayRows = await page.locator('table tbody tr').all();
       for (let i = 0; i < holidayRows.length; i++) {
           console.log(holidayRows.length);
           const row = holidayRows[i];
@@ -44,42 +44,8 @@ const csv = require('csv-parser');
     }
   });
 
-  //     await page.waitForSelector('tbody tr', { state: 'visible' });
-  //     const holidayRows = await page.locator('tbody tr').all();
-  //       for (let i = 0; i < holidayRows.length; i++) {
-  //         console.log(holidayRows.length);
-  //         const row = holidayRows[i];
-  //         const holidayNameCell = await row.locator('td:first-child a').first();
-  //         const holidayLink = await holidayNameCell.getAttribute('href');
-  //         await holidayNameCell.click();
+  
 
-  //         const nameInput = await page.locator('#mui-1');
-  //         const dateInput = await page.getByPlaceholder('mm/dd/yyyy');
-  //         const name = await nameInput.getAttribute('value');
-  //         const date = await dateInput.getAttribute('value');
-  //         let location;
-
-  //         if ((await page.$('//*[@id="filter-description"]/div/span')) !== null) {
-  //           location = await page.locator('//*[@id="filter-description"]/div/span').textContent();
-  //         } else {
-  //           location = "All";
-  //         }
-
-  //         holi.push({ name, date, location });
-  //         await page.getByRole('button', { name: 'Save' }).first().click();
-  //          await page.waitForSelector('tbody tr', { state: 'visible' });
-  //       }
-  //       // await page.locator(`[href="?year=${year}"]`).click();
-  //       // await page.waitForSelector('tbody tr', { state: 'visible' });
-
-  //       console.log(holi);
-  //       console.log("YEEEES");
-  //     }
-  // });
- // const years = await page.locator('.fab-Button fab-Button--secondary fab-Button--outline if (years !== 2024) {
-    //   //   await page.locator(`[href="?year=${year}"]`).click(); 
-    //   await page.waitForSelector('tbody tr ', { state: 'visible' });
-    //   // }
     //   for( const  element of await page.locator('tbody td a').all()){
     //       await element.click();
     //       const nameInput = await page.locator('#mui-1');
